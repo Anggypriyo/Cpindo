@@ -34,7 +34,28 @@ class C_menu extends Controller
 
     public function store(Request $request)
     {
-            
+            $request->validate([
+            'nama_menu' => 'required|max:30',
+            'harga_menu' => 'max:11',
+            'id_katmenu' => 'required|max:11',
+        ]);
+        $path = null;
+        if($request->foto_menu)
+            {
+                $file = $request->file('foto_menu');
+                //dd($request);
+                $path = '/img/menu/'.time().'-'.$file->getClientOriginalName();
+                //dd($path);
+                $file->move(public_path('/img/menu'), $path);
+            }
+                $menu = menu::create([
+                    'nama_menu' => $request->nama_menu,
+                    'harga_menu' => $request->harga_menu,
+                    'foto_menu' => $path,
+                    'id_katmenu' => $request->id_katmenu,
+                ]);
+                $menu->save();
+        return redirect('admin/menu')->with('status','Data Berhasil Ditambahkan!!!'); 
     }
 
     public function show($id)
@@ -56,6 +77,34 @@ class C_menu extends Controller
             'nama_katmenu' => $request->nama_katmenu
         ]);
         return redirect('admin/katmenu')->with('status','Data Berhasil Diedit!!!'); 
+    }
+
+    public function update(Request $request, $id)
+    {
+            $request->validate([
+            'nama_menu' => 'required|max:30',
+            'harga_menu' => 'max:11',
+            'id_katmenu' => 'required|max:11',
+        ]);
+                $path = null;
+                if($request->foto_menu)
+            {
+                $file = $request->file('foto_menu');
+                //dd($request);
+                $path = '/img/menu/'.time().'-'.$file->getClientOriginalName();
+                //dd($path);
+                $file->move(public_path('/img/menu'), $path);
+            }else{
+                $path = $request->foto_menu2;
+            }
+                menu::where('id_menu',$id)
+                ->update([
+                    'nama_menu' => $request->nama_menu,
+                    'harga_menu' => $request->harga_menu,
+                    'foto_menu' => $path,
+                    'id_katmenu' => $request->id_katmenu
+                ]);
+        return redirect('admin/menu')->with('status','Data Berhasil Diupdate!!!'); 
     }
 
     public function destroykatmenu($id)

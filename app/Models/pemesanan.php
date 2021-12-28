@@ -12,7 +12,7 @@ class pemesanan extends Model
     use HasFactory;
     protected $table = 'pemesanan';
     protected $primaryKey = 'id_pemesanan';
-    public $timestamp = false;
+    public $timestamps = false;
     protected $fillable = ['bukti_pemesanan','tgl_pemesanan','tgl_pengambilan','status_pemesanan','ket_pemesanan','id_katpem'];
     public function katpem()
     {

@@ -34,7 +34,31 @@ class C_pemesanan extends Controller
 
     public function store(Request $request)
     {
+            $request->validate([
             
+            'id_katpem' => 'required|max:11',
+            'tgl_pengambilan' => 'required',
+            'status_pemesanan' => 'required|max:1',
+        ]);
+        $path = null;
+        if($request->bukti_pengadaan)
+            {
+                $file = $request->file('bukti_pengadaan');
+                //dd($request);
+                $path = '/img/pemesanan/'.time().'-'.$file->getClientOriginalName();
+                //dd($path);
+                $file->move(public_path('/img/pemesanan'), $path);
+            }
+                $pemesanan = pemesanan::create([
+                    'nama_pemesanan' => $request->nama_pemesanan,
+                    'bukti_pengadaan' => $path,
+                    'tgl_pengambilan' => $request->tgl_pengambilan,
+                    'status_pemesanan' => $request->status_pemesanan,
+                    'ket_pemesanan' => $request->ket_pemesanan,
+                    'id_katpem' => $request->id_katpem,
+                ]);
+                $pemesanan->save();
+        return redirect('admin/pemesanan')->with('status','Data Berhasil Ditambahkan!!!'); 
     }
 
     public function show($id)
@@ -56,6 +80,35 @@ class C_pemesanan extends Controller
             'nama_katpem' => $request->nama_katpem
         ]);
         return redirect('admin/katpem')->with('status','Data Berhasil Diedit!!!'); 
+    }
+
+    public function update(Request $request, $id)
+    {
+            $request->validate([
+            
+            'id_katpem' => 'required|max:11',
+        ]);
+                $path = null;
+                if($request->bukti_pengadaan)
+            {
+                $file = $request->file('bukti_pengadaan');
+                //dd($request);
+                $path = '/img/pemesanan/'.time().'-'.$file->getClientOriginalName();
+                //dd($path);
+                $file->move(public_path('/img/pemesanan'), $path);
+            }else{
+                $path = $request->bukti_pengadaan2;
+            }
+                pemesanan::where('id_pemesanan',$id)
+                ->update([
+                    'nama_pemesanan' => $request->nama_pemesanan,
+                    'bukti_pengadaan' => $path,
+                    'tgl_pengambilan' => $request->tgl_pengambilan,
+                    'status_pemesanan' => $request->status_pemesanan,
+                    'ket_pemesanan' => $request->ket_pemesanan,
+                    'id_katpem' => $request->id_katpem
+                ]);
+        return redirect('admin/pemesanan')->with('status','Data Berhasil Diupdate!!!'); 
     }
 
     public function destroykatpem($id)
