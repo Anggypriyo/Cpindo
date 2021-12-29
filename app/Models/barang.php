@@ -18,4 +18,8 @@ class barang extends Model
     {
         return $this->belongsTo(katbar::class,'id_katbar');
     }
+    public function detail_barang()
+    {
+        return $this->hasMany(detail_barang::class,'id_detbg');
+    }
 }

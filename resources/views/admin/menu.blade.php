@@ -86,10 +86,12 @@
                                                                     @error('harga_menu') <div class="invalid-feedback">{{$message}} </div>@enderror
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="exampleFormControlSelect1">Nama Kategori menu</label>
+                                                                    <label for="exampleFormControlSelect1">Nama Kategori Menu</label>
                                                                     <select class="form-control @error('id_katmenu') is-invalid @enderror" name="id_katmenu" id="exampleFormControlSelect1" >
                                                                     <option value="{{$k->katmenu->id_katmenu}}">{{$k->katmenu->nama_katmenu}}</option>
-                                                                    
+                                                                    @foreach($katmenu as $k)
+                                                                    <option value="{{$k->id_katmenu}}">{{$loop->iteration}}. {{$k->nama_katmenu}}</option>
+                                                                    @endforeach
                                                                     </select>
                                                                     @error('id_katmenu') <div class="invalid-feedback">{{$message}}</div>@enderror
                                                                 </div>

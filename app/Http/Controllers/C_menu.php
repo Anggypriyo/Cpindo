@@ -116,7 +116,7 @@ class C_menu extends Controller
     public function destroy($id)
     {
         
-        katmenu::where('id_menu',$id)->delete();
+        menu::where('id_menu',$id)->delete();
         return redirect('admin/menu')->with('status','Data Berhasil Dihapus!!!');
     }
 }

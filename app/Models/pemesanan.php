@@ -18,4 +18,8 @@ class pemesanan extends Model
     {
         return $this->belongsTo(katpem::class,'id_katpem');
     }
+    public function detail_pemesanan()
+    {
+        return $this->hasMany(detail_pemesanan::class,'id_detpem');
+    }
 }

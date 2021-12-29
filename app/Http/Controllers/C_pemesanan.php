@@ -41,17 +41,16 @@ class C_pemesanan extends Controller
             'status_pemesanan' => 'required|max:1',
         ]);
         $path = null;
-        if($request->bukti_pengadaan)
+        if($request->bukti_pemesanan)
             {
-                $file = $request->file('bukti_pengadaan');
+                $file = $request->file('bukti_pemesanan');
                 //dd($request);
                 $path = '/img/pemesanan/'.time().'-'.$file->getClientOriginalName();
                 //dd($path);
                 $file->move(public_path('/img/pemesanan'), $path);
             }
                 $pemesanan = pemesanan::create([
-                    'nama_pemesanan' => $request->nama_pemesanan,
-                    'bukti_pengadaan' => $path,
+                    'bukti_pemesanan' => $path,
                     'tgl_pengambilan' => $request->tgl_pengambilan,
                     'status_pemesanan' => $request->status_pemesanan,
                     'ket_pemesanan' => $request->ket_pemesanan,
@@ -85,24 +84,24 @@ class C_pemesanan extends Controller
     public function update(Request $request, $id)
     {
             $request->validate([
-            
+            'tgl_pengambilan' => 'required',
+            'status_pemesanan' => 'required|max:1',
             'id_katpem' => 'required|max:11',
         ]);
                 $path = null;
-                if($request->bukti_pengadaan)
+                if($request->bukti_pemesanan)
             {
-                $file = $request->file('bukti_pengadaan');
+                $file = $request->file('bukti_pemesanan');
                 //dd($request);
                 $path = '/img/pemesanan/'.time().'-'.$file->getClientOriginalName();
                 //dd($path);
                 $file->move(public_path('/img/pemesanan'), $path);
             }else{
-                $path = $request->bukti_pengadaan2;
+                $path = $request->bukti_pemesanan2;
             }
                 pemesanan::where('id_pemesanan',$id)
                 ->update([
-                    'nama_pemesanan' => $request->nama_pemesanan,
-                    'bukti_pengadaan' => $path,
+                    'bukti_pemesanan' => $path,
                     'tgl_pengambilan' => $request->tgl_pengambilan,
                     'status_pemesanan' => $request->status_pemesanan,
                     'ket_pemesanan' => $request->ket_pemesanan,
@@ -120,7 +119,7 @@ class C_pemesanan extends Controller
     public function destroy($id)
     {
         
-        katpem::where('id_pemesanan',$id)->delete();
+        pemesanan::where('id_pemesanan',$id)->delete();
         return redirect('admin/pemesanan')->with('status','Data Berhasil Dihapus!!!');
     }
 }

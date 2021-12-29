@@ -82,7 +82,9 @@
                                                                     <label for="exampleFormControlSelect1">Nama Kategori Barang</label>
                                                                     <select class="form-control @error('id_katbar') is-invalid @enderror" name="id_katbar" id="exampleFormControlSelect1" >
                                                                     <option value="{{$k->kategori_barang->id_katbar}}">{{$k->kategori_barang->nama_katbar}}</option>
-                                                                    
+                                                                    @foreach($katbar as $k)
+                                                                    <option value="{{$k->id_katbar}}">{{$loop->iteration}}. {{$k->nama_katbar}}</option>
+                                                                    @endforeach
                                                                     </select>
                                                                     @error('id_katbar') <div class="invalid-feedback">{{$message}}</div>@enderror
                                                                 </div>

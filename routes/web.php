@@ -6,6 +6,8 @@ use App\Http\Controllers\C_profil;
 use App\Http\Controllers\C_barang;
 use App\Http\Controllers\C_pemesanan;
 use App\Http\Controllers\C_menu;
+use App\Http\Controllers\C_pengadaan;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,10 @@ Route::patch('/admin/pemesanan/update/{id}',[C_pemesanan::class,'update']);
 Route::delete('/admin/pemesanan/delete/{id}',[C_pemesanan::class,'destroy']);
 
 // Route Pengadaan
+Route::get('/admin/pengadaan',[C_pengadaan::class,'index']);
+Route::post('/admin/pengadaan/store',[C_pengadaan::class,'store']);
+Route::patch('/admin/pengadaan/update/{id}',[C_pengadaan::class,'update']);
+Route::delete('/admin/pengadaan/delete/{id}',[C_pengadaan::class,'destroy']);
 
 //Route Profil
 Route::get('/admin/katprof',[C_profil::class,'indexkatprof']);

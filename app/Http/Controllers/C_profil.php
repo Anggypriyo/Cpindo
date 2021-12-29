@@ -97,7 +97,7 @@ class C_profil extends Controller
     public function destroy($id)
     {
         
-        katprof::where('id_profil',$id)->delete();
+        profil::where('id_profil',$id)->delete();
         return redirect('admin/profil')->with('status','Data Berhasil Dihapus!!!');
     }
 }

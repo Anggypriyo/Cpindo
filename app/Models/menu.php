@@ -18,4 +18,8 @@ class menu extends Model
     {
         return $this->belongsTo(katmenu::class,'id_katmenu');
     }
+    public function detail_pemesanan()
+    {
+        return $this->hasMany(detail_pemesanan::class,'id_detpem');
+    }
 }
