@@ -12,8 +12,8 @@ class profil extends Model
     use HasFactory;
     protected $table = 'profil';
     protected $primaryKey = 'id_profil';
-    public $timestamp = false;
-    protected $fillable = ['nama_profil','path_profil','id_katprof'];
+    public $timestamps = false;
+    protected $fillable = ['judul_profil','path_profil','id_katprof'];
     public function katprof()
     {
         return $this->belongsTo(katprof::class,'id_katprof');

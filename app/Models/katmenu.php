@@ -12,7 +12,7 @@ class katmenu extends Model
     use HasFactory;
     protected $table = 'kategori_menu';
     protected $primaryKey = 'id_katmenu';
-    public $timestamp = false;
+    public $timestamps = false;
     protected $fillable = ['nama_katmenu'];
     public function menu()
     {

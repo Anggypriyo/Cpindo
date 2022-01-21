@@ -7,7 +7,7 @@ use App\Http\Controllers\C_barang;
 use App\Http\Controllers\C_pemesanan;
 use App\Http\Controllers\C_menu;
 use App\Http\Controllers\C_pengadaan;
-
+use App\Http\Controllers\C_detbg;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +75,11 @@ Route::get('/admin/barang',[C_barang::class,'index']);
 Route::post('/admin/barang/store',[C_barang::class,'store']);
 Route::patch('/admin/barang/update/{id}',[C_barang::class,'update']);
 Route::delete('/admin/barang/delete/{id}',[C_barang::class,'destroy']);
+
+//Route Detail Barang
+Route::get('/admin/detbg',[C_detbg::class,'index']);
+Route::post('/admin/detbg/store',[C_detbg::class,'store']);
+Route::patch('/admin/detbg/update/{id}',[C_detbg::class,'update']);
+Route::delete('/admin/detbg/delete/{id}',[C_detbg::class,'destroy']);
+
+//Route Detail Pemesanan

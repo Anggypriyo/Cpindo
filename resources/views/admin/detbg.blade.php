@@ -1,6 +1,6 @@
 @extends('admin/komponen-admin/master')
 
-@section('title','Pengadaan')
+@section('title','Detail Barang')
 
 @section('css')
 <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -16,7 +16,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tabel Pengadaan</h4>
+                                <h4 class="card-title">Tabel Detail Barang</h4>
                                 <button class="btn btn-primary my-2" data-toggle="modal" data-target="#createModal">Create New Data</button>
                                 @if (session('status'))
                                 <div class="alert alert-success">
@@ -28,42 +28,38 @@
                                         style="width:100%">
                                         <thead>
                                             <tr>
+                                                <th>Nama Barang</th>
+                                                <th>Stok Barang</th>
                                                 <th>Bukti Pengadaan</th>
-                                                <th>Status Pengadaan</th>
                                                 <th>Tanggal Pengadaan</th>
-                                                <th>Keterangan Pengadaan</th>
+                                                <th>Riwayat Pembaharuan</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($pengadaan as $k)
+                                        @foreach($detbg as $k)
                                             <tr>
+                                                <td>{{$k->barang->nama_barang}}</td>
+                                                <td>{{$k->stok_barang}}</td>
                                                 <td>
-                                                @if($k->bukti_pengadaan == null)
-                                                <img src="{{asset($k->bukti_pengadaan)}}" style="width:150px;height:150px">
+                                                @if($k->pengadaan->bukti_pengadaan == null)
+                                                <img src="{{asset($k->pengadaan->bukti_pengadaan)}}" style="width:150px;height:150px">
                                                 @else
-                                                <img src="{{ $k->bukti_pengadaan }}" style="width:150px;height:150px">
+                                                <img src="{{ $k->pengadaan->bukti_pengadaan }}" style="width:150px;height:150px">
                                                 @endif
                                                 </td>
-                                                @if($k->status_pengadaan == 0)
-                                                <td>Proses</td>
-                                                @elseif($k->status_pengadaan == 1)
-                                                <td>Selesai</td>
-                                                @else
-                                                <td>Dibatalkan</td>
-                                                @endif
-                                                <td>{{$k->tgl_pengadaan}}</td>
-                                                <td>{{$k->ket_pengadaan}}</td>
+                                                <td>{{$k->pengadaan->tgl_pengadaan}}</td>
+                                                <td>{{$k->updated_at}}</td>
                                                 <td>
-                                                <button class="badge badge-success" data-toggle="modal" data-target="#editModal{{$k->id_pengadaan}}">Edit</button>
-                                                <button class="badge badge-danger" data-toggle="modal" data-target="#deleteModal{{$k->id_pengadaan}}">Delete</button>
+                                                <button class="badge badge-success" data-toggle="modal" data-target="#editModal{{$k->id_detbg}}">Edit</button>
+                                                <button class="badge badge-danger" data-toggle="modal" data-target="#deleteModal{{$k->id_detbg}}">Delete</button>
                                                 </td>
                                                 <!-- Modal Edit -->
-                                                <div class="modal fade" id="editModal{{$k->id_pengadaan}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="editModal{{$k->id_detbg}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Edit pengadaan</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Barang</h5>
                                                         <button type="button" class="close" data-dismiss ="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -72,45 +68,31 @@
                                                             width="290">
                                                         <p class="mt-3 mb-0">
                                                     </div>
-                                                    <form method="post" action="{{url('/admin/pengadaan/update/'.$k->id_pengadaan)}}" enctype="multipart/form-data">
+                                                    <form method="post" action="{{url('/admin/barang/update/'.$k->id_detbg)}}" enctype="multipart/form-data">
                                                             @method('patch')
                                                             @csrf
-                                                            <label for="bukti_pengadaan">Upload Bukti Pengadaan</label>
+                                                            <label for="bukti_pengadaan">Upload Gambar</label>
                                                                     <fieldset class="form-group">
                                                                             <input type="file" class="form-control-file" id="bukti_pengadaan" name="bukti_pengadaan" accept=".png, .jpg, .jpeg">
-                                                                            <input type="text" class="form-control @error('bukti_pengadaan') is-invalid @enderror" id ="bukti_pengadaan" placeholder="Masukkan bukti pengadaan" name="bukti_pengadaan2" hidden value="{{ $k->bukti_pengadaan }}">
+                                                                            <input type="text" class="form-control @error('bukti_pengadaan') is-invalid @enderror" id ="bukti_pengadaan" placeholder="Masukkan Foto Pegawai" name="bukti_pengadaan2" hidden value="{{ $k->bukti_pengadaan }}">
                                                                     </fieldset>
                                                                     @error('bukti_pengadaan') <div class="invalid-feedback">{{$message}}</div>@enderror
                                                                 <div class="form-group">
-                                                                    <label for="tgl_pengadaan">Tanggal Pengadaan</label>
-                                                                    <input type="text" class="form-control @error('tgl_pengadaan') is-invalid @enderror" id ="tgl_pengadaan" name="tgl_pengadaan" value="{{ $k->tgl_pengadaan }}">
-                                                                    @error('tgl_pengadaan') <div class="invalid-feedback">{{$message}} </div>@enderror
+                                                                    <label for="nama_barang">Bukti Pengadaan</label>
+                                                                    <input type="text" class="form-control @error('nama_barang') is-invalid @enderror" id ="nama_barang" placeholder="Masukkan Bukti Pengadaan" name="nama_barang" value="{{ $k->nama_barang }}">
+                                                                    @error('nama_barang') <div class="invalid-feedback">{{$message}} </div>@enderror
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="exampleFormControlSelect1">Status Pengadaan</label>
-                                                                    <select class="form-control @error('status_pengadaan') is-invalid @enderror" name="status_pengadaan" id="exampleFormControlSelect1" >
-                                                                    @if($k->status_pengadaan == 0)
-                                                                    <option value="{{$k->status_pengadaan}}">Proses</option>
-                                                                    <option value="1">Selesai</option>
-                                                                    <option value="2">Dibatalkan</option>
-                                                                    @elseif($k->status_pengadaan == 1)
-                                                                    <option value="{{$k->status_pengadaan}}">Selesai</option>
-                                                                    <option value="0">Proses</option>
-                                                                    <option value="2">Dibatalkan</option>
-                                                                    @else
-                                                                    <option value="{{$k->status_pengadaan}}">Dibatalkan</option>
-                                                                    <option value="0">Proses</option>
-                                                                    <option value="1">Selesai</option>
-                                                                    @endif
+                                                                    <label for="exampleFormControlSelect1">Tanggal Pengadaan</label>
+                                                                    <select class="form-control @error('id_pengadaan') is-invalid @enderror" name="id_pengadaan" id="exampleFormControlSelect1" >
+                                                                    <option value="{{$k->pengadaan->id_pengadaan}}">{{$k->pengadaan->tgl_pengadaan}}</option>
+                                                                    @foreach($katbar as $k)
+                                                                    <option value="{{$k->id_pengadaan}}">{{$loop->iteration}}. {{$k->tgl_pengadaan}}</option>
+                                                                    @endforeach
                                                                     </select>
-                                                                    @error('status_pengadaan') <div class="invalid-feedback">{{$message}}</div>@enderror
+                                                                    @error('id_pengadaan') <div class="invalid-feedback">{{$message}}</div>@enderror
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="ket_pengadaan">Keterangan pengadaan</label>
-                                                                    <textarea class="form-control @error('ket_pengadaan') is-invalid @enderror" rows="3" placeholder="Text Here..." id ="ket_pengadaan" name="ket_pengadaan">{{ $k->ket_pengadaan }}</textarea>
-                                                                    @error('ket_pengadaan') <div class="invalid-feedback">{{$message}} </div>@enderror
-                                                                </div>
-                                                                    <button type="submit" class="btn btn-primary">Edit Data</button>
+                                                                    <button type="sumbit" class="btn btn-primary">Edit Data</button>
                                                                     
                                                             </form>
                                                     </div>
@@ -124,7 +106,7 @@
                                                 <!-- end Modal -->
                                                 
                                                 <!-- The Modal Delete -->
-                                                <div class="modal fade" id="deleteModal{{$k->id_pengadaan}}">
+                                                <div class="modal fade" id="deleteModal{{$k->id_detbg}}">
                                                     <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                     
@@ -141,7 +123,7 @@
                                                         
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                        <form action="{{url('/admin/pengadaan/delete/'.$k->id_pengadaan)}}" method="post">
+                                                        <form action="{{url('/admin/barang/delete/'.$k->id_detbg)}}" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -158,9 +140,8 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Bukti Pengadaan</th>
-                                                <th>Status Pengadaan</th>
-                                                <th>Tanggal Pengadaan</th>
-                                                <th>Keterangan Pengadaan</th>
+                                                <th>Pengadaan</th>
+                                                <th>Foto</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -179,38 +160,34 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah pengadaan</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Barang</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                               </div>
                               <div class="modal-body">
-                              <form method="post" action="{{url('/admin/pengadaan/store')}}" enctype="multipart/form-data">
+                              <form method="post" action="{{url('/admin/barang/store')}}" enctype="multipart/form-data">
                                 @csrf
-                                <label for="bukti_pengadaan">Upload Bukti pengadaan</label>
+                                <div class="form-group">
+                                  <label for="nama_barang">Bukti Pengadaan </label>
+                                  <input type="text" class="form-control @error('nama_barang') is-invalid @enderror" id ="nama_barang" placeholder="Masukkan Bukti Pengadaan" name="nama_barang" value="{{ old('nama_barang') }}">
+                                  @error('nama_barang') <div class="invalid-feedback">{{$message}}</div>@enderror
+                                </div>
+                                
+                                <label for="bukti_pengadaan">Upload Gambar</label>
                                 <fieldset class="form-group">
                                         <input type="file" class="form-control-file" id="bukti_pengadaan" name="bukti_pengadaan" accept=".png, .jpg, .jpeg">
                                 </fieldset>
                                 @error('bukti_pengadaan') <div class="invalid-feedback">{{$message}}</div>@enderror
 
-                                                                <div class="form-group">
-                                                                    <label for="tgl_pengadaan">Tanggal pengadaan</label>
-                                                                    <input type="datetime-local" class="form-control @error('tgl_pengadaan') is-invalid @enderror" id ="tgl_pengadaan" placeholder="Masukkan Tanggal Pengadaan" name="tgl_pengadaan" value="{{ old('tgl_pengadaan') }}">
-                                                                    @error('tgl_pengadaan') <div class="invalid-feedback">{{$message}} </div>@enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="exampleFormControlSelect1">Status pengadaan</label>
-                                                                    <select class="form-control @error('status_pengadaan') is-invalid @enderror" name="status_pengadaan" id="exampleFormControlSelect1" >
-                                                                    <option value="">=== Pilih Status ===</option>
-                                                                    <option value="0">Proses</option>
-                                                                    <option value="1">Selesai</option>
-                                                                    <option value="2">Dibatalkan</option>
-                                                                    </select>
-                                                                    @error('status_pengadaan') <div class="invalid-feedback">{{$message}}</div>@enderror
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="ket_pengadaan">Keterangan pengadaan</label>
-                                                                    <textarea class="form-control @error('ket_pengadaan') is-invalid @enderror" rows="3" placeholder="Text Here..." id ="ket_pengadaan" name="ket_pengadaan" value="{{ old('ket_pengadaan') }}"></textarea>
-                                                                    @error('ket_pengadaan') <div class="invalid-feedback">{{$message}} </div>@enderror
-                                                                </div>
+                                <div class="form-group">
+                                  <label for="exampleFormControlSelect1">Pengadaan</label>
+                                  <select class="form-control @error('id_pengadaan') is-invalid @enderror" name="id_pengadaan" id="id_pengadaan" >
+                                  <option value="">--- pilih data ---</option>
+                                  @foreach($pengadaan as $k)
+                                  <option value="{{$k->id_pengadaan}}">{{$loop->iteration}}. {{$k->tgl_pengadaan}}</option>
+                                  @endforeach     
+                                  </select>
+                                  @error('id_pengadaan') <div class="invalid-feedback">{{$message}}</div>@enderror
+                                </div>
                                 <button type="submit" class="btn btn-primary">Tambah Data</button>
                               </form>
                               </div>

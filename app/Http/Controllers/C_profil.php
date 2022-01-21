@@ -35,35 +35,35 @@ class C_profil extends Controller
     public function store(Request $request)
     {
             $request->validate([
-            'nama_profil' => 'required|max:30',
+            'judul_profil' => 'required|max:30',
             'id_katprof' => 'required|max:11',
         ]);
         
         $path = null;
-                if($request->award)
+                if($request->tampilan_utama)
             {
-                $file = $request->file('gambar_utama');
+                $file = $request->file('tampilan_utama');
                 $path = '/img/profil/'.time().'-'.$file->getClientOriginalName();
                 //dd($path);
                 $file->move(public_path('img/profil'), $path);
             }
-            else if($request->struktur){
-                $file = $request->file('struktur');
+            else if($request->lokasi){
+                $file = $request->file('lokasi');
                 $path = '/img/profil/'.time().'-'.$file->getClientOriginalName();
                 //dd($path);
                 $file->move(public_path('img/profil'), $path);
-            }else if($request->tampilan){
-                $file = $request->file('tampilan');
+            }else if($request->foto_deskripsi){
+                $file = $request->file('foto_deskripsi');
                 $path = '/img/profil/'.time().'-'.$file->getClientOriginalName();
                 //dd($path);
                 $file->move(public_path('img/profil'), $path);
             }
-                $about = About::create([
-                    'nama_profil' => $request->judul_about,
-                    'foto_profil' => $path,
+                $profil = profil::create([
+                    'judul_profil' => $request->judul_profil,
+                    'path_profil' => $path,
                     'id_katprof' => $request->id_katprof,
                 ]);
-                $about->save();
+                $profil->save();
         return redirect('admin/profil')->with('status','Data Berhasil Ditambahkan!!!'); 
     }
 
@@ -86,6 +86,49 @@ class C_profil extends Controller
             'nama_katprof' => $request->nama_katprof
         ]);
         return redirect('admin/katprof')->with('status','Data Berhasil Diedit!!!'); 
+    }
+
+    public function update(Request $request, $id)
+    {
+        
+        $request->validate([
+            'judul_profil' => 'required|max:30',
+            'id_katprof' => 'required|max:11',
+        ]);
+        
+        $path = null;
+                if($request->tampilan_utama)
+            {
+                $file = $request->file('tampilan_utama');
+                $path = '/img/profil/'.time().'-'.$file->getClientOriginalName();
+                //dd($path);
+                $file->move(public_path('img/profil'), $path);
+            }else if($request->tampilan_utama2){
+                $path = $request->tampilan_utama2;
+            }
+            else if($request->lokasi){
+                $file = $request->file('lokasi');
+                $path = '/img/profil/'.time().'-'.$file->getClientOriginalName();
+                //dd($path);
+                $file->move(public_path('img/profil'), $path);
+            }else if($request->lokasi2){
+                $path = $request->lokasi2;
+            }
+            else if($request->foto_deskripsi){
+                $file = $request->file('foto_deskripsi');
+                $path = '/img/profil/'.time().'-'.$file->getClientOriginalName();
+                //dd($path);
+                $file->move(public_path('img/profil'), $path);
+            }else if($request->foto_deskripsi2){
+                $path = $request->foto_deskripsi2;
+            }
+        profil::where('id_profil',$id)
+        ->update([
+            'judul_profil' => $request->judul_profil,
+            'path_profil' => $path,
+            'id_katprof' => $request->id_katprof,
+        ]);
+        return redirect('admin/profil')->with('status','Data Berhasil Di Update!!!'); 
     }
 
     public function destroykatprof($id)
