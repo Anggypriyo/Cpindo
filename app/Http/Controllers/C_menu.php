@@ -39,7 +39,7 @@ class C_menu extends Controller
             'harga_menu' => 'max:11',
             'id_katmenu' => 'required|max:11',
         ]);
-        $path = null;
+        $path = '/img/no_image.jpg';
         if($request->foto_menu)
             {
                 $file = $request->file('foto_menu');
@@ -86,7 +86,7 @@ class C_menu extends Controller
             'harga_menu' => 'max:11',
             'id_katmenu' => 'required|max:11',
         ]);
-                $path = null;
+                $path = '/img/no_image.jpg';
                 if($request->foto_menu)
             {
                 $file = $request->file('foto_menu');

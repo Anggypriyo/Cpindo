@@ -39,7 +39,7 @@ class C_profil extends Controller
             'id_katprof' => 'required|max:11',
         ]);
         
-        $path = null;
+        $path = '/img/no_image.jpg';
                 if($request->tampilan_utama)
             {
                 $file = $request->file('tampilan_utama');

@@ -77,7 +77,7 @@
 	<nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-dark py-0 px-0 m-0" style="">
 		<div class="row align-items-center mb-1 mx-0">
 			<div class="col-sm-12 col-md-12 col-lg-10 col-xl-5 text-center p-3">
-				<img class="img-fluid" src="{{asset('/img/bumn.png')}}" style="max-width: 150px;">
+				<img class="img-fluid" src="{{asset('/img/logo_pindo.png')}}" style="max-width: 75px;">
 			</div>
 		</div>
 		
@@ -91,7 +91,7 @@
 					<a class="nav-link" href="#header">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item  py-2 tentang mx-3">
-					<a class="nav-link " href="#about">Tentang Pindo</a>
+					<a class="nav-link " href="#profiltentang">Tentang Pindo</a>
 				</li>
 				<li class="nav-item  py-2 struktur mx-3">
 					<a class="nav-link " href="#struktur">Lokasi Pindo</a>
@@ -104,7 +104,7 @@
 		</div>
 		<div class="row align-items-center mb-1 mx-0">
 			<div class="col-sm-12 col-md-12 col-lg-10 col-xl-5 text-center p-3">
-				<img class="img-fluid" src="{{asset('/img/logo-pal.png')}}" style="max-width: 150px;">
+				<!-- <img class="img-fluid" src="{{asset('/img/logo-pal.png')}}" style="max-width: 150px;"> -->
 			</div>
 		</div>
 	</nav>

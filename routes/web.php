@@ -8,6 +8,7 @@ use App\Http\Controllers\C_pemesanan;
 use App\Http\Controllers\C_menu;
 use App\Http\Controllers\C_pengadaan;
 use App\Http\Controllers\C_detbg;
+use App\Http\Controllers\Chome;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,15 @@ use App\Http\Controllers\C_detbg;
 |
 */
 
-Route::get('/', [Cadmin::class,'index']);
-Route::get('/home', [Cadmin::class,'index']);
+Route::get('/admin', [Cadmin::class,'index']);
+Route::get('/admin/home', [Cadmin::class,'index']);
 Route::get('/admin/dashbord', [Cadmin::class,'index']);
 
 Route::get('/admin/datatable', [Cadmin::class,'indextable']);
+
+//Route Landing Page
+Route::get('/', [Chome::class,'index']);
+
 
 // Route Pemesanan
 Route::get('/admin/katpem',[C_pemesanan::class,'indexkatpem']);

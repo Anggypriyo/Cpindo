@@ -63,7 +63,7 @@
                                                     <div class="modal-body">
                                                     <div class="col-lg-4">
                                                         <img src="{{asset($k->foto_menu)}}" alt="image" class="img-thumbnail"
-                                                            width="290">
+                                                            width="150">
                                                         <p class="mt-3 mb-0">
                                                     </div>
                                                     <form method="post" action="{{url('/admin/menu/update/'.$k->id_menu)}}" enctype="multipart/form-data">

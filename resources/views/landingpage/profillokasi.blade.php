@@ -11,7 +11,7 @@
         <div id="corouselDenah" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#corouselDenah" data-slide-to="0" class="active"></li>
-                @foreach($layout as $layouts)
+                @foreach($profillokasi as $layouts)
                 <li data-target="#corouselDenah" data-slide-to="{{$loop->iteration}}"></li>
                 @endforeach
             </ol>
@@ -22,9 +22,9 @@
                 <h1 class="shadows">DENAH KAWASAN</h1>
                 </div>
             </div>
-            @foreach($layout as $layouts)
+            @foreach($profillokasi as $layouts)
             <div class="carousel-item" data-interval="1000">
-            <img src="{{$layouts->path_layout}}" class="d-block w-100" alt="...">
+            <img src="{{$layouts->path_profil}}" class="d-block w-100" alt="...">
                 <div class="carousel-caption  d-md-block" style="vertical-align:top;">
                 <h1 style="  text-shadow: 2px 2px 2px #000000;">{{$layouts->judul_layout}}</h1>
                 </div>
@@ -41,10 +41,10 @@
         </a>
         </div>
 -->
-    @foreach($layout as $layouts)
+    @foreach($profillokasi as $layouts)
     <div class="col-12">
         <h1 style="text-align:center; padding:20px;color:white">{{$layouts->judul_layout}}</h1>
-        <img src="{{asset($layouts->path_layout)}}" class="card-img img-fluid img-rounded shadow" style="height:500px;margin:20px">
+        <img src="{{asset($layouts->path_profil)}}" class="card-img img-fluid img-rounded shadow" style="height:500px;margin:20px">
     </div>
     @endforeach   
 </div>

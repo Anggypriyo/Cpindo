@@ -4,7 +4,7 @@
     opacity: 0.7;
 }
 </style>
-<div class="about">
+<div class="profiltentang">
     <table style="width:100%;color:white;">
         <tr>
         <td style="width:50%;text-align:center">
@@ -14,22 +14,22 @@
         
         <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                @foreach($aboutAward as $award)
+                @foreach($profiltentang as $award)
                 @if($loop->first)
                 <div class="carousel-item active" data-interval="3000">
-                <img src="{{ asset($award->path_about) }}" style="width:100%;height:100%" alt="...">
+                <img src="{{ asset($award->path_profil) }}" style="width:50%;height:50%" alt="...">
                     <div class="carousel-caption d-md-block">
                     <h5>
-                        {{$award->judul_about}}
+                        {{$award->judul_profil}}
                     </h5>
                     </div>
                 </div>
                 @else
                 <div class="carousel-item" data-interval="3000">
-                <img src="{{ asset($award->path_about) }}"  style="width:100%;height:100%" alt="...">
+                <img src="{{ asset($award->path_profil) }}"  style="width:50%;height:50%" alt="...">
                     <div class="carousel-caption d-md-block">
                     <h5>
-                        {{$award->judul_about}}
+                        {{$award->judul_profil}}
                     </h5>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
 </div>
 
 <script>
-document.querySelectorAll('a[href^="#about"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#profiltentang"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
 

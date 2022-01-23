@@ -26,7 +26,7 @@ class C_pemesanan extends Controller
     public function storekatpem(Request $request)
     {
         $request->validate([
-            'nama_katpem' => 'required|max:25',
+            'nama_katpem' => 'required|max:50',
         ]);
         katpem::create($request->all());
         return redirect('admin/katpem')->with('status','Data Berhasil Ditambahkan!!!'); 
@@ -40,7 +40,7 @@ class C_pemesanan extends Controller
             'tgl_pengambilan' => 'required',
             'status_pemesanan' => 'required|max:1',
         ]);
-        $path = null;
+        $path = '/img/no_image.jpg';
         if($request->bukti_pemesanan)
             {
                 $file = $request->file('bukti_pemesanan');

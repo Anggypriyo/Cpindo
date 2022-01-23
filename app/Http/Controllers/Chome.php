@@ -13,6 +13,6 @@ class Chome extends Controller
         $profilutama = profil::where('id_katprof',5)->get();
         $profilfoto = profil::Where('id_katprof',2)->get();
         $profillokasi = profil::where('id_katprof',3)->get();
-        return view('home', compact('profiltentang','profilutama','profilfoto','profillokasi'));
+        return view('landingpage/home', compact('profiltentang','profilutama','profilfoto','profillokasi'));
     }
 }

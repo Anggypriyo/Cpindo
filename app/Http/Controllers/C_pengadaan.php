@@ -29,7 +29,7 @@ class C_pengadaan extends Controller
             'tgl_pengadaan' => 'required',
             'status_pengadaan' => 'required|max:1',
         ]);
-        $path = null;
+        $path = '/img/no_image.jpg';
         if($request->bukti_pengadaan)
             {
                 $file = $request->file('bukti_pengadaan');

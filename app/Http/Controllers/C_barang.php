@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\katbar;
 use App\Models\barang;
+use App\Models\detail_barang;
 use Illuminate\Support\Facades\Storage;
 
 class C_barang extends Controller
@@ -39,7 +40,7 @@ class C_barang extends Controller
             'nama_barang' => 'required|max:30',
             'id_katbar' => 'required|max:11',
         ]);
-        $path = null;
+        $path = '/img/no_image.jpg';
         if($request->foto_barang)
             {
                 $file = $request->file('foto_barang');
@@ -51,6 +52,14 @@ class C_barang extends Controller
                 $barang = barang::create([
                     'nama_barang' => $request->nama_barang,
                     'foto_barang' => $path,
+                    'id_katbar' => $request->id_katbar,
+                ]);
+                $barang->save();
+                $barang = barang::latest()
+                ->first();
+                $barang = detail_barang::create([
+                    'stok_barang' => 0,
+                    'id_barang' => $barang->id_barang,
                     'id_katbar' => $request->id_katbar,
                 ]);
                 $barang->save();
