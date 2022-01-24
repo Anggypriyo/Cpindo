@@ -12,7 +12,7 @@
   <!-- CSS Eksternal -->
   @include('admin/komponen-admin/css-eksternal')
   <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
+  <link rel="icon" type="image" sizes="16x16" href="{{ asset('/img/logo_pindo.png') }}">
   <!-- css internal -->
   @yield('css')
 

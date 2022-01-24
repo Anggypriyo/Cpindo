@@ -9,14 +9,14 @@
 @section('title','Home')
 <!-- konten web --> 
 @section('konten')
-<div class="header" id="header" style="height:900px;background-color:#000050;margin-top:-100px">
+<div class="header" id="header" style="height:900px;background-color:#800000;margin-top:-100px">
 		<!-- header -->
 		@include('landingpage/header-halaman')
         <div class="container" id="profiltentang">
         </div>
         </div>
         
-		<div class="profiltentang" style="height:550px;background-color:#000050;width:100%;">
+		<div class="profiltentang" style="height:550px;background-color:#800000;width:100%;">
 		<!-- profiltentang -->
 		@include('landingpage/profiltentang')
 		

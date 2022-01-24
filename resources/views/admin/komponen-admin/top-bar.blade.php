@@ -1,4 +1,12 @@
 
+<style>
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+    }
+</style>
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -11,23 +19,13 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <div class="navbar-brand">
+                    <div class="navbar-brand" style="text-align:center;">
                         <!-- Logo icon -->
                         <a href="/">
-                            <b class="logo-icon">
-                                <!-- Dark Logo icon -->
-                                <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo icon -->
-                                <img src="../assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                            <b class="center">
+                                </br>
+                                <img class="img-fluid" src="{{asset('/img/logo_pindo.png')}}" style="max-width: 120px;">
                             </b>
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
                         </a>
                     </div>
                     <!-- ============================================================== -->

@@ -50,33 +50,25 @@
             
         </tr>
         <tr>
-        <td style="vertical-align:text-top;text-align:justify;padding:25px;font-size:12px">
+        <td style="vertical-align:text-top;text-align:justify;padding:25px;font-size:18px">
         <ul>
             <li>
-            <p>Divisi Kawasan adalah unit kerja struktural tingkat Divisi dalam organisasi Direktorat SDM & Umum dan dipimpin oleh seorang Kepala Divisi Kawasan, berkedudukan langsung di bawah dan bertanggung jawab kepada Direktur SDM & Umum.</p>
+            <p>Resto industrial modern dan adat Indonesia pertama di Sidoarjo-Surabaya!!</p>
             </li>
         </ul>
-                   
-            <p><B>Tugas Pokok</B></br>
             <ul>
                 <li>
-                Menjabarkan dan melaksanakan kebijakan perusahaan dalam bidang pengelolaan dan pemeliharaan bangunan, infrastruktur, utilitas, aset perusahaan, tata ruang & tata graha. kebersihan & pertamanan, pencegahan & penanggulangan kebakaran serta 
-            pengadaan barang & jasa non produksi & sarana prasarana perkantoran di lingkungan PT. PAL Indonesia (Persero).
+                    Cari rumah makan keluarga untuk kumpul santai bersama? Ingin bercengkrama dengan sahabat anda?
+                    Welcome To Warung Pindo!!
                 </li>
             </ul>
             </p>
             <p><B>Fungsi</B>
             <ol>
-                <li>Penanggulangan dan pencegahan kebakaran di area perusahaan</li>
-                <li>Pengelolaan dan pemeliharaan bangunan / fasilitas perkantoran perusahaan beserta infrastrukturnya</li>
-                <li>Pemeliharaan dan pengelolaan utilitas perusahan</li>
-                <li>Perencanaan dan pengendalian anggaran investasi bangunan dan infrastruktur perusahaan</li>
-                <li>Pengelolaan dan mengkoordinir aset (aktiva tetap) berwujud perusahaan</li>
-                <li>Penataan dan pengaturan sandar kapal di area perusahaan</li>
-                <li>Pengelolaan tata ruang & tata graha di area perusahaan</li>
-                <li>Pengelolaan pengadaan barang & jasa non produksi / sarana prasarana perkantoran</li>
             </ol>
             </p>
+            <img class="img-fluid" src="{{asset('/img/gofood.png')}}" style="max-width: 100px;">
+            <img class="img-fluid" src="{{asset('/img/grabfood.png')}}" style="max-width: 100px;">
         </td>
         <td>
         

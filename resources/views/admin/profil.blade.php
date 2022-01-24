@@ -50,7 +50,7 @@
                                                 <button class="badge badge-success" data-toggle="modal" data-target="#editModal{{$k->id_profil}}">Edit</button>
                                                 <button class="badge badge-danger" data-toggle="modal" data-target="#deleteModal{{$k->id_profil}}">Delete</button>
                                                 </td>
-                                                <!-- Modal Edit -->
+            <!-- Modal Edit -->
               <div class="modal fade" id="editModal{{$k->id_profil}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -185,7 +185,7 @@
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
-    <!-- Modal tambah data -->
+<!-- Modal tambah data -->
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -295,7 +295,7 @@ $(document).ready(function() {
         document.getElementById('upload12').style.display='block';
         document.getElementById('upload11').style.display='none';
         document.getElementById('upload13').style.display='none';
-      }else if(doc == '5'){
+      }else if(doc == '4'){
         document.getElementById('upload12').style.display='none';
         document.getElementById('upload11').style.display='none';
         document.getElementById('upload13').style.display='block';

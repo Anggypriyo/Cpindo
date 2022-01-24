@@ -101,10 +101,10 @@ h1 {
           @foreach($profilutama as $header)
           @if ($loop->first)
           <div class="carousel-item active skyblue">
-          <img src="{{ asset($header->path_profil) }}" class="d-block" style="height:700px;width:100%">
+          <img src="{{ asset($header->path_profil) }}" class="d-block" style="height:800px;width:100%">
             <div class="carousel-caption d-md-block">
               <h3 data-animation="animated bounceInRight">
-                Selamat Datang Divisi Kawasan
+                Selamat Datang PINDO
               </h3>
               <!--<h3 data-animation="animated bounceInLeft">
                 {{$header->judul_profil}}
@@ -115,7 +115,7 @@ h1 {
           
           <!-- third slide -->
           <div class="carousel-item skyblue">
-          <img src="{{ asset($header->path_profil) }}" class="d-block" style="height:700px;width:100%">
+          <img src="{{ asset($header->path_profil) }}" class="d-block" style="height:800px;width:100%">
             <div class="carousel-caption d-md-block">
               <!--<h3 class="icon-container" data-animation="animated zoomInLeft">
                 <span class="fa fa-glass"></span>
