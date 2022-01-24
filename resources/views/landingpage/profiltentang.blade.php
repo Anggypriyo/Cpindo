@@ -1,6 +1,6 @@
 <style>
 .carousel-caption h5{
-    background-color: #000050;
+    background-color: #964B00;
     opacity: 0.7;
 }
 </style>
@@ -17,7 +17,7 @@
                 @foreach($profiltentang as $award)
                 @if($loop->first)
                 <div class="carousel-item active" data-interval="3000">
-                <img src="{{ asset($award->path_profil) }}" style="width:50%;height:50%" alt="...">
+                <img src="{{ asset($award->path_profil) }}" style="width:75%;height:75%" alt="...">
                     <div class="carousel-caption d-md-block">
                     <h5>
                         {{$award->judul_profil}}
@@ -26,7 +26,7 @@
                 </div>
                 @else
                 <div class="carousel-item" data-interval="3000">
-                <img src="{{ asset($award->path_profil) }}"  style="width:50%;height:50%" alt="...">
+                <img src="{{ asset($award->path_profil) }}"  style="width:75%;height:75%" alt="...">
                     <div class="carousel-caption d-md-block">
                     <h5>
                         {{$award->judul_profil}}
@@ -75,9 +75,6 @@
         </td>
         </tr>
     </table>
-    
-    <div class="container" id="visi-misi">
-    </div>
     
       
 </div>

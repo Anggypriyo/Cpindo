@@ -1,63 +1,31 @@
 <style>
-.denah-kawasan h3 {
+.denah-profillokasi h3 {
   font-weight:bold;
   margin-bottom:20px;
   padding-top:5px;
   color:'white';
 }
+.dashed {border-style: dashed;}
 </style>
 <div class="container">
-<!--
-        <div id="corouselDenah" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#corouselDenah" data-slide-to="0" class="active"></li>
-                @foreach($profillokasi as $layouts)
-                <li data-target="#corouselDenah" data-slide-to="{{$loop->iteration}}"></li>
-                @endforeach
-            </ol>
-        <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="1000">
-            <img src="/img/BANUWATI.jpg" class="d-block w-100" alt="..." style="width:80%;height:80%">
-                <div class="carousel-caption d-none d-md-block">
-                <h1 class="shadows">DENAH KAWASAN</h1>
-                </div>
-            </div>
-            @foreach($profillokasi as $layouts)
-            <div class="carousel-item" data-interval="1000">
-            <img src="{{$layouts->path_profil}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption  d-md-block" style="vertical-align:top;">
-                <h1 style="  text-shadow: 2px 2px 2px #000000;">{{$layouts->judul_layout}}</h1>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#corouselDenah" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#corouselDenah" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-        </div>
--->
     @foreach($profillokasi as $layouts)
     <div class="col-12">
-        <h1 style="text-align:center; padding:20px;color:white">{{$layouts->judul_layout}}</h1>
-        <img src="{{asset($layouts->path_profil)}}" class="card-img img-fluid img-rounded shadow" style="height:500px;margin:20px">
+        <!-- <h1 style="text-align:center; padding:20px;color:white">{{$layouts->judul_layout}}</h1> -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.833967921124!2d112.70128262992424!3d-7.37249867462415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e39a986f8f3d%3A0x600e2dff20279224!2sWarung%20Pindo!5e0!3m2!1sid!2sid!4v1643024385075!5m2!1sid!2sid" width="600" height="450" style="border:dashed white;margin:75px" allowfullscreen="" loading="lazy"></iframe>
+        <img src="{{asset($layouts->path_profil)}}" class="card-img img-fluid img-rounded shadow" style="width:200px;height=300px;margin-top:-500px;">
     </div>
     @endforeach   
 </div>
-
+</br>
 <script>
-document.querySelectorAll('a[href^="#kawasan"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#profillokasi"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
-        var clickedItem = $(".denah");
+        var clickedItem = $(".lokasi");
         $(".nav-item").each( function() {
             $(this).removeClass("active");
         });

@@ -20,7 +20,7 @@
 .carousel-caption h3,
 .carousel .icon-container,
 .carousel-caption button {
-  background-color: #000050;
+  background-color: #964B00;
   opacity: 0.7;
 }
 .carousel-caption h3 {

@@ -32,7 +32,7 @@
 				<h1 align="center" style="margin-top:50px">Lokasi Pindo</h1>
 			</div>
 		</div>
-		<div class="profillokasi" style="height:auto;background-color:#000050">
+		<div class="profillokasi" style="height:auto;background-color:#800000">
 		@include('landingpage/profillokasi')
 		</div>
 

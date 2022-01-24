@@ -28,10 +28,10 @@
   </head>
   <style>
   		.active{
-			background-color: #D4D4D4;
+			background-color: #800000;
 		}
 		.active .nav-link{
-			background-color: #D4D4D4 !important;
+			background-color: #800000 !important;
 		}
 		.navbar{
 			
@@ -49,15 +49,15 @@
 			
 		}
 		.navbar-dark .navbar-nav .nav-link {
-		    color: #000050 !important;
+		    color: #ffffff !important;
 		    font-size: 16px;
 		}
 		.navbar-nav .nav-item:hover {
-		    background-color: #D4D4D4;
+		    background-color: #800000;
 			
 		}
 		.dropdown-menu .dropdown-item:hover {
-		    background-color: #D4D4D4;
+		    background-color: #800000;
 			
 		}
 		body {
@@ -93,8 +93,8 @@
 				<li class="nav-item  py-2 tentang mx-3">
 					<a class="nav-link " href="#profiltentang">Tentang Pindo</a>
 				</li>
-				<li class="nav-item  py-2 struktur mx-3">
-					<a class="nav-link " href="#struktur">Lokasi Pindo</a>
+				<li class="nav-item  py-2 lokasi mx-3">
+					<a class="nav-link " href="#profillokasi">Lokasi Pindo</a>
 				</li>
 				<li class="nav-item  py-2 struktur mx-3">
 					<a class="nav-link " href="/menu">Menu Pindo</a>
