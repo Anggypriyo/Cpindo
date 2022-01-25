@@ -8,6 +8,7 @@ use App\Http\Controllers\C_pemesanan;
 use App\Http\Controllers\C_menu;
 use App\Http\Controllers\C_pengadaan;
 use App\Http\Controllers\C_detbg;
+use App\Http\Controllers\C_detpem;
 use App\Http\Controllers\Chome;
 
 /*
@@ -88,3 +89,7 @@ Route::patch('/admin/detbg/update/{id}',[C_detbg::class,'update']);
 Route::delete('/admin/detbg/delete/{id}',[C_detbg::class,'destroy']);
 
 //Route Detail Pemesanan
+Route::get('/admin/detpem',[C_detpem::class,'index']);
+Route::post('/admin/detpem/store',[C_detpem::class,'store']);
+Route::patch('/admin/detpem/update/{id}',[C_detpem::class,'update']);
+Route::delete('/admin/detpem/delete/{id}',[C_detpem::class,'destroy']);
