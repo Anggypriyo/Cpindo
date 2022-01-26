@@ -8,14 +8,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title></title>
+    <title>Menu Pindo</title>
   </head>
   <style>
   		.active{
 			background-color: #800000;
+            border-radius: 30px;  
 		}
 		.active .nav-link{
 			color: #800000 !important;
+            border-radius: 30px;  
 		}
 		.navbar{
 			
@@ -38,7 +40,7 @@
 		}
 		.navbar-nav .nav-item:hover {
 		    background-color: #800000;
-			
+			border-radius: 30px;  
 		}
 		.dropdown-menu .dropdown-item:hover {
 		    background-color: #800000;
@@ -51,11 +53,13 @@
 		.main {
   			margin-top: 30px; /* Add a top margin to avoid content overlay */
 		}
-		h6{
+		h7{
 			text-transform: uppercase;
+            color:#964B00 !important;
 		}
 		h5{
 			text-transform: capitalize;
+            color:#964B00 !important;
 		}
 	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -79,16 +83,16 @@
 		<div class="container-fluid px-0" style="max-width: 100%;">
 		  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		    <ul class="navbar-nav mr-auto">
-				<li class="nav-item px-3 pt-2 home " style="padding-left:40px;">
+				<li class="nav-item px-4 pt-1 home " style="padding-left:40px;">
 					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item px-3 pt-2 makanan ">
+				<li class="nav-item px-4 pt-1 makanan ">
 					<a class="nav-link" href="#makanan">Makanan</a>
 				</li>
-				<li class="nav-item px-3 pt-2 minuman">
+				<li class="nav-item px-4 pt-1 minuman">
 					<a class="nav-link" href="#minuman">Minuman</a>
 				</li>
-				<li class="nav-item px-3 pt-2 Paket ">
+				<li class="nav-item px-4 pt-1 Paket ">
 					<a class="nav-link" href="#Paket">Paket</a>
 				</li>
 		    </ul>
@@ -98,7 +102,7 @@
 	<div class="main" style="min-height:452px">
 		<div class="container"  id="makanan" style="height:100px">
 		</div>
-        <h1 align="center" style="margin-top:20px">Menu Makanan</h1>
+        <h1 align="center" style="margin-top:20px;color:#964B00">Menu Makanan</h1>
 
         <div class="row">
 			@foreach($menu as $peg)
@@ -107,8 +111,8 @@
 					<div class="card shadow" style="width: 16rem; height:24rem; margin:0 auto;" >
 						<img src="{{ asset($peg->foto_menu) }}" class="card-img-top" alt="..." style="max-height:24rem">
 						<div class="card-body text-center">
-                        <h5 class="card-title">{{$peg->katmenu->nama_katmenu}}</h5>
-						<h6 class="card-title">{{$peg->nama_menu}}</h6>
+                        <h7 class="card-title">{{$peg->katmenu->nama_katmenu}}</h7>
+						<h5 class="card-title">{{$peg->nama_menu}}</h5>
 						</div>
 					</div>
     </br></br>
@@ -119,7 +123,7 @@
 
 		<div class="container" id="minuman" style="height:120px">
 		</div>
-        <h1 align="center" style="margin-top:0px">Menu Minuman</h1>
+        <h1 align="center" style="margin-top:0px;color:#964B00">Menu Minuman</h1>
 
         <div class="row">
 			@foreach($menu as $peg)
@@ -128,8 +132,8 @@
 					<div class="card shadow" style="width: 16rem; height:24rem; margin:0 auto;" >
 						<img src="{{ asset($peg->foto_menu) }}" class="card-img-top" alt="..." style="max-height:24rem">
 						<div class="card-body text-center">
-                        <h5 class="card-title">{{$peg->katmenu->nama_katmenu}}</h5>
-						<h6 class="card-title">{{$peg->nama_menu}}</h6>
+                        <h7 class="card-title">{{$peg->katmenu->nama_katmenu}}</h7>
+						<h5 class="card-title">{{$peg->nama_menu}}</h5>
 						</div>
 					</div>
     </br></br>
@@ -140,7 +144,7 @@
 
 		<div class="container" id="Paket" style="height:120px">
 		</div>
-        <h1 align="center" style="margin-top:0px">Paket Keluarga</h1>
+        <h1 align="center" style="margin-top:0px;color:#964B00">Paket Keluarga</h1>
 
         <div class="row">
 			@foreach($menu as $peg)
@@ -149,8 +153,8 @@
 					<div class="card shadow" style="width: 16rem; height:24rem; margin:0 auto;" >
 						<img src="{{ asset($peg->foto_menu) }}" class="card-img-top" alt="..." style="max-height:24rem">
 						<div class="card-body text-center">
-                        <h5 class="card-title">{{$peg->katmenu->nama_katmenu}}</h5>
-						<h6 class="card-title">{{$peg->nama_menu}}</h6>
+                        <h7 class="card-title">{{$peg->katmenu->nama_katmenu}}</h7>
+						<h5 class="card-title">{{$peg->nama_menu}}</h5>
 						</div>
 					</div>
                     </br></br>

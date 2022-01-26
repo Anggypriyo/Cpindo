@@ -2,6 +2,12 @@
 .carousel-caption h5{
     background-color: #964B00;
     opacity: 0.7;
+    border-radius: 30px;  
+}
+.carousel-item  {
+  min-height: 100px; 
+  height: 100%;
+  width:100%; 
 }
 </style>
 <div class="profiltentang">
@@ -17,7 +23,7 @@
                 @foreach($profiltentang as $award)
                 @if($loop->first)
                 <div class="carousel-item active" data-interval="3000">
-                <img src="{{ asset($award->path_profil) }}" style="width:75%;height:75%" alt="...">
+                <img src="{{ asset($award->path_profil) }}" style="width:100%;height:100%" alt="...">
                     <div class="carousel-caption d-md-block">
                     <h5>
                         {{$award->judul_profil}}
@@ -26,7 +32,7 @@
                 </div>
                 @else
                 <div class="carousel-item" data-interval="3000">
-                <img src="{{ asset($award->path_profil) }}"  style="width:75%;height:75%" alt="...">
+                <img src="{{ asset($award->path_profil) }}"  style="width:100%;height:100%" alt="...">
                     <div class="carousel-caption d-md-block">
                     <h5>
                         {{$award->judul_profil}}
@@ -63,7 +69,7 @@
                 </li>
             </ul>
             </p>
-            <p><B>Fungsi</B>
+            <p><B>Penawaran</B>
             <ol>
             </ol>
             </p>

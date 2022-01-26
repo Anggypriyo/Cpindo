@@ -29,9 +29,11 @@
   <style>
   		.active{
 			background-color: #800000;
+			border-radius: 30px;  
 		}
 		.active .nav-link{
 			background-color: #800000 !important;
+			border-radius: 30px;  
 		}
 		.navbar{
 			
@@ -46,7 +48,7 @@
 			font-family: 'Times new Roman';
 			font-size: 1rem;
 			font-weight:bold;
-			
+			border-radius: 30px;  
 		}
 		.navbar-dark .navbar-nav .nav-link {
 		    color: #ffffff !important;
@@ -54,7 +56,7 @@
 		}
 		.navbar-nav .nav-item:hover {
 		    background-color: #800000;
-			
+			border-radius: 30px;  
 		}
 		.dropdown-menu .dropdown-item:hover {
 		    background-color: #800000;

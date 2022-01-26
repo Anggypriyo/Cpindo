@@ -22,9 +22,11 @@
 .carousel-caption button {
   background-color: #964B00;
   opacity: 0.7;
+
 }
 .carousel-caption h3 {
   padding: .5em;
+  border-radius: 30px;  
 }
 .carousel .icon-container {
   display: inline-block;

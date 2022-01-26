@@ -29,7 +29,7 @@
 		<!-- Lokasi Pindo -->
 		<div class="profillokasi"  style="height:100px;background-color:#FFFFFF;">
 			<div class="col-12">
-				<h1 align="center" style="margin-top:50px">Lokasi Pindo</h1>
+				<h1 align="center" style="margin-top:50px;color:#964B00">Lokasi Pindo</h1>
 			</div>
 		</div>
 		<div class="profillokasi" style="height:auto;background-color:#800000">
