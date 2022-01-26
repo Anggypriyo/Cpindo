@@ -40,6 +40,7 @@
                                 </li>
                             </ul>
                         </li>
+			@if(auth()->user()->is_admin == 1)
                         <!-- Data Master-->
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Data Master Admin</span></li>
@@ -92,7 +93,10 @@
                                 </li>
                             </ul>
                         </li>
-                    
+                    	<li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/admin/pengguna')}}"
+                                aria-expanded="false"><i data-feather="bookmark" class="feather-icon"></i><span
+                                    class="hide-menu">Pengguna</span></a></li>
+			@endif
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

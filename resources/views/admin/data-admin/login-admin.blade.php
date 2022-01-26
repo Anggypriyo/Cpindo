@@ -10,10 +10,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
     <title>Login Admin Pindo</title>
     <!-- Custom CSS -->
-    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,38 +40,43 @@
         <!-- Login box.scss -->
         <!-- ============================================================== -->
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
-            style="background:url(../assets/images/big/auth-bg.jpg) no-repeat center center;">
+            style="background:url({{ asset('assets/images/big/auth-bg.jpg') }}) no-repeat center center;">
             <div class="auth-box row">
-                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(../assets/images/big/3.jpg);">
+                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url({{ asset('assets/images/big/3.jpg') }});">
                 </div>
                 <div class="col-lg-5 col-md-7 bg-white">
                     <div class="p-3">
                         <div class="text-center">
-                            <img src="../assets/images/big/icon.png" alt="wrapkit">
+                            <img src="{{ asset('assets/images/big/icon.png') }}" alt="wrapkit">
                         </div>
                         <h2 class="mt-3 text-center">Login</h2>
                         <p class="text-center">Masukkan Email dan Password Sesuai dengan Akun</p>
-                        <form class="mt-4">
+                        <form class="mt-4" action="{{url('/mengotentikasi')}}" method="post">
+			    @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="text-dark" for="uname">email</label>
-                                        <input class="form-control" id="uname" type="text"
-                                            placeholder="masukkan email">
+                                        <label class="text-dark" for="email">Email</label>
+                                        <input class="form-control @error('email') is-invalid @enderror" id="email" type="text"
+                                            placeholder="masukkan email" name="email" value="{{ old('email') }}">
+					@error('email') <div class="invalid-feedback">{{$message}}</div>@enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="text-dark" for="pwd">Password</label>
-                                        <input class="form-control" id="pwd" type="password"
-                                            placeholder="masukkan password">
+                                        <label class="text-dark" for="password">Password</label>
+                                        <input class="form-control @error('password') is-invalid @enderror" id="password" type="password"
+                                            placeholder="masukkan password" name="password" value="{{ old('password') }}">
+					@error('password') <div class="invalid-feedback">{{$message}}</div>@enderror
+                                    </div>
+                                </div>
+				<div class="col-lg-12">
+                                    <div class="form-group">
+					@error('login') <div class="invalid-feedback">{{$message}}</div>@enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">
                                     <button type="submit" class="btn btn-block btn-dark">Login</button>
-                                </div>
-                                <div class="col-lg-12 text-center mt-5">
-                                    Don't have an account? <a href="#" class="text-danger">Sign Up</a>
                                 </div>
                             </div>
                         </form>
@@ -86,10 +91,10 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
+    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->

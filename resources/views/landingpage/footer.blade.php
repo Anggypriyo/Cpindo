@@ -3,7 +3,7 @@
 		<div class="col-xl-8 py-4 px-4 align-middle text-white">
 		<!-- Warung Pindo
             <br>Jl. Ketapang - Suko No.17, Dusun Ketapang, Suko, Kecamatan Sidoarjo, Kabupaten Sidoarjo, Jawa Timur 61257 -->
-			Copyright <a href="{{url('/admin')}}">© </a>2022 <br>Warung Pindo<br> All Rights Reserved
+			Copyright <a href="{{url('/login')}}">© </a>2022 <br>Warung Pindo<br> All Rights Reserved
 		</div>
 		<div class="col-xl-4 py-4 px-4 align-middle text-white">
 			
