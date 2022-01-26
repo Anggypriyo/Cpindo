@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jan 2022 pada 15.28
+-- Waktu pembuatan: 26 Jan 2022 pada 09.56
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 7.4.27
 
@@ -52,11 +52,20 @@ INSERT INTO `barang` (`id_barang`, `nama_barang`, `foto_barang`, `id_katbar`, `d
 CREATE TABLE `detail_barang` (
   `id_detbg` int(11) NOT NULL,
   `stok_barang` int(11) NOT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `id_barang` int(11) NOT NULL,
   `id_pengadaan` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `detail_barang`
+--
+
+INSERT INTO `detail_barang` (`id_detbg`, `stok_barang`, `updated_at`, `id_barang`, `id_pengadaan`, `created_at`, `deleted_at`) VALUES
+(1, 2, '2022-01-24 08:37:48', 2, 1, '2022-01-24 08:37:48', NULL),
+(2, 8, '2022-01-24 08:58:06', 1, 1, '2022-01-24 08:58:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -69,9 +78,17 @@ CREATE TABLE `detail_pemesanan` (
   `total_harga` int(11) NOT NULL,
   `id_pemesanan` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `detail_pemesanan`
+--
+
+INSERT INTO `detail_pemesanan` (`id_detpem`, `total_harga`, `id_pemesanan`, `id_menu`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 25000, 1, 1, '2022-01-25 08:51:07', '2022-01-25 08:51:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -103,6 +120,7 @@ INSERT INTO `kategori_barang` (`id_katbar`, `nama_katbar`, `deleted_at`) VALUES
 CREATE TABLE `kategori_menu` (
   `id_katmenu` int(11) NOT NULL,
   `nama_katmenu` varchar(25) NOT NULL,
+  `kategori` varchar(10) DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -110,28 +128,29 @@ CREATE TABLE `kategori_menu` (
 -- Dumping data untuk tabel `kategori_menu`
 --
 
-INSERT INTO `kategori_menu` (`id_katmenu`, `nama_katmenu`, `deleted_at`) VALUES
-(1, 'Nasi Goreng', NULL),
-(2, 'Reguler', NULL),
-(3, 'Sayuran', NULL),
-(4, 'Appetizer', NULL),
-(5, 'Kwetiaw', NULL),
-(6, 'Menu Nasi', NULL),
-(7, 'Mie', NULL),
-(8, 'Bihun', NULL),
-(9, 'Ayam', NULL),
-(10, 'Sapi', NULL),
-(11, 'Gurami', NULL),
-(12, 'Kakap', NULL),
-(13, 'Kepiting Soka', NULL),
-(14, 'Soup', NULL),
-(15, 'Udang', NULL),
-(16, 'Cumi', NULL),
-(17, 'Kopi', NULL),
-(18, 'Latte', NULL),
-(19, 'Ice Cream', NULL),
-(20, 'Milkshake', NULL),
-(21, 'Soda Dan Mojito', NULL);
+INSERT INTO `kategori_menu` (`id_katmenu`, `nama_katmenu`, `kategori`, `deleted_at`) VALUES
+(1, 'Nasi Goreng', 'Makanan', NULL),
+(2, 'Reguler', 'Minuman', NULL),
+(3, 'Sayuran', 'Makanan', NULL),
+(4, 'Appetizer', 'Makanan', NULL),
+(5, 'Kwetiaw', 'Makanan', NULL),
+(6, 'Menu Nasi', 'Makanan', NULL),
+(7, 'Mie', 'Makanan', NULL),
+(8, 'Bihun', 'Makanan', NULL),
+(9, 'Ayam', 'Makanan', NULL),
+(10, 'Sapi', 'Makanan', NULL),
+(11, 'Gurami', 'Makanan', NULL),
+(12, 'Kakap', 'Makanan', NULL),
+(13, 'Kepiting Soka', 'Makanan', NULL),
+(14, 'Soup', 'Makanan', NULL),
+(15, 'Udang', 'Makanan', NULL),
+(16, 'Cumi', 'Makanan', NULL),
+(17, 'Kopi', 'Minuman', NULL),
+(18, 'Latte', 'Minuman', NULL),
+(19, 'Ice Cream', 'Minuman', NULL),
+(20, 'Milkshake', 'Minuman', NULL),
+(21, 'Soda Dan Mojito', 'Minuman', NULL),
+(2223, 'Paket Keluarga', 'Paket', NULL);
 
 -- --------------------------------------------------------
 
@@ -200,7 +219,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga_menu`, `foto_menu`, `id_katme
 (2, 'Nasi Goreng Ayam', 21250, '/img/menu/1642859760-gambar_2022-01-22_205554.png', 1, NULL),
 (3, 'Nasi Goreng Jawa', 25000, '/img/menu/1642859760-gambar_2022-01-22_205554.png', 1, NULL),
 (4, 'Nasi Goreng Seafood', 31250, '/img/menu/1642859874-gambar_2022-01-22_205752.png', 1, NULL),
-(5, 'Nasi Goreng Ikan Asin', 27500, NULL, 1, NULL),
+(5, 'Nasi Goreng Ikan Asin', 27500, '/img/no_image.jpg', 1, NULL),
 (6, 'Nasi Goreng Omelette', 27500, '/img/menu/1642860006-gambar_2022-01-22_210004.png', 1, NULL),
 (7, 'Capcay Spesial', 33750, '/img/menu/1642860345-gambar_2022-01-22_210540.png', 3, NULL),
 (8, 'Sapo Tahu', 50000, '/img/menu/1642860393-gambar_2022-01-22_210629.png', 3, NULL),
@@ -225,7 +244,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga_menu`, `foto_menu`, `id_katme
 (27, 'Udang Tepung', 60000, '/img/menu/1642862937-gambar_2022-01-22_214853.png', 15, NULL),
 (28, 'Udang Pedas', 60000, '/img/menu/1642862971-gambar_2022-01-22_214920.png', 15, NULL),
 (29, 'Cumi Telur Asin', 62500, '/img/menu/1642863001-gambar_2022-01-22_214959.png', 16, NULL),
-(30, 'Kopi Tubruk', 6250, NULL, 17, NULL),
+(30, 'Kopi Tubruk', 6250, '/img/no_image.jpg', 17, NULL),
 (31, 'Greentea Latte', 17500, '/img/menu/1642863485-gambar_2022-01-22_215800.png', 18, NULL),
 (32, 'Ice Cream Pindo', 18750, '/img/menu/1642863663-gambar_2022-01-22_220058.png', 19, NULL),
 (33, 'Milkshake Mocca', 12500, '/img/menu/1642863883-gambar_2022-01-22_220438.png', 20, NULL),
@@ -234,7 +253,8 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga_menu`, `foto_menu`, `id_katme
 (36, 'Es Kopi Susu', 17500, '/img/menu/1642864022-gambar_2022-01-22_220652.png', 2, NULL),
 (37, 'Leci Mojito', 21250, '/img/menu/1642864074-gambar_2022-01-22_220749.png', 21, NULL),
 (38, 'Arizona Sunset', 22500, '/img/menu/1642864104-gambar_2022-01-22_220821.png', 21, NULL),
-(39, 'Blue Sky', 21250, '/img/menu/1642864130-gambar_2022-01-22_220846.png', 21, NULL);
+(39, 'Blue Sky', 21250, '/img/menu/1642864130-gambar_2022-01-22_220846.png', 21, NULL),
+(40, 'Paket ber-4', 95000, '/img/no_image.jpg', 2223, NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +278,7 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`id_pemesanan`, `bukti_pemesanan`, `tgl_pemesanan`, `tgl_pengambilan`, `status_pemesanan`, `ket_pemesanan`, `id_katpem`, `deleted_at`) VALUES
-(1, NULL, '2022-01-04 15:22:55', '2022-01-05 22:20:00', 0, 'a.n Lek Tri', 1, NULL),
+(1, '/img/no_image.jpg', '2022-01-04 15:22:55', '2022-01-05 22:20:00', 0, 'a.n Lek Tri', 1, NULL),
 (2, '/img/no_image.jpg', '2022-01-23 13:52:46', '2022-01-23 20:43:00', 1, NULL, 1, NULL);
 
 -- --------------------------------------------------------
@@ -302,11 +322,16 @@ CREATE TABLE `profil` (
 --
 
 INSERT INTO `profil` (`id_profil`, `judul_profil`, `path_profil`, `id_katprof`, `deleted_at`) VALUES
-(2, '2012', '/img/profil/1642344012-Yuuki.Asuna.full.1522819.jpg', 2, NULL),
-(3, 'Waifu Material', '/img/profil/1642344041-Yuuki.Asuna.full.1522819.jpg', 2, NULL),
-(4, 'Selamat Datang', NULL, 2, NULL),
-(12, 'Selamat', NULL, 2, NULL),
-(13, 'Selamat 2', '/img/no_image.jpg', 2, NULL);
+(2, '2021', '/img/profil/1642992784-PINDO.png', 2, NULL),
+(3, 'Waifu Material', '/img/profil/1642344041-Yuuki.Asuna.full.1522819.jpg', 2, '2022-01-23 23:25:13'),
+(4, 'Selamat Datang', '/img/profil/1643005310-Pindo 2.png', 2, NULL),
+(12, 'Selamat Datang', '/img/profil/1642992445-PINDO.png', 2, NULL),
+(13, 'Side-door PINDO', '/img/profil/1642992840-Side Door PINDO.png', 2, NULL),
+(14, 'Gazebo PINDO', '/img/profil/1643005676-Gazebo PINDO.png', 4, NULL),
+(15, 'Meja PINDO', '/img/profil/1643005717-PINDO style.png', 4, NULL),
+(16, 'Barcode Lokasi', '/img/profil/1643032149-qr_lokasi.png', 3, NULL),
+(17, 'Welcome to PINDO', '/img/profil/1643035505-Pindo 2.png', 4, NULL),
+(18, 'Barcode', '/img/profil/1643176073-qr_lokasi.png', 3, '2022-01-25 22:50:38');
 
 --
 -- Indexes for dumped tables
@@ -400,13 +425,13 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT untuk tabel `detail_barang`
 --
 ALTER TABLE `detail_barang`
-  MODIFY `id_detbg` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detbg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
-  MODIFY `id_detpem` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detpem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_barang`
@@ -418,7 +443,7 @@ ALTER TABLE `kategori_barang`
 -- AUTO_INCREMENT untuk tabel `kategori_menu`
 --
 ALTER TABLE `kategori_menu`
-  MODIFY `id_katmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2223;
+  MODIFY `id_katmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2224;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_pemesanan`
@@ -436,7 +461,7 @@ ALTER TABLE `kategori_profil`
 -- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
@@ -454,7 +479,7 @@ ALTER TABLE `pengadaan`
 -- AUTO_INCREMENT untuk tabel `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
