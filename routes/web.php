@@ -10,6 +10,7 @@ use App\Http\Controllers\C_pengadaan;
 use App\Http\Controllers\C_detbg;
 use App\Http\Controllers\C_detpem;
 use App\Http\Controllers\Chome;
+use App\Http\Controllers\Cmenupindo;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::get('/admin/datatable', [Cadmin::class,'indextable']);
 
 //Route Landing Page
 Route::get('/', [Chome::class,'index']);
-
+Route::get('/menu', [Cmenupindo::class,'index']);
 
 // Route Pemesanan
 Route::get('/admin/katpem',[C_pemesanan::class,'indexkatpem']);
