@@ -70,8 +70,13 @@
             </ul>
             </p>
             <p><B>Penawaran</B>
-            <ol>
-            </ol>
+            <ul>
+            <li>Makanan Halal</li>
+            <li>Suasana Nyaman dan Santai</li>
+            <li>Menu Selalu Tersedia</li>
+
+            </ul>
+            
             </p>
             <img class="img-fluid" src="{{asset('/img/gofood.png')}}" style="max-width: 100px;">
             <img class="img-fluid" src="{{asset('/img/grabfood.png')}}" style="max-width: 100px;">
