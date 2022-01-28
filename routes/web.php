@@ -27,6 +27,7 @@ use App\Http\Controllers\C_pengguna;
 Route::middleware(['guest'])->group(function () {
     //Route Landing Page
     Route::get('/', [Chome::class,'index']);
+    Route::get('/home', [Chome::class,'index']);
     Route::get('/menu', [Cmenupindo::class,'index']);
 
     //Route Otentikasi
